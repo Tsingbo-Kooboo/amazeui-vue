@@ -1,0 +1,8 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "editor.tabSize": 2,
+  "vetur.format.html.wrap_attributes": "force-aligned"
+}

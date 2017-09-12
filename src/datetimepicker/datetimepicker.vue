@@ -1,29 +1,37 @@
 <template>
-
-<div class="am-datepicker">
-  <div class="am-datepicker-caret" v-if="caretDisplayed"></div>
-  <div class="am-datepicker-date" v-if="showDatePicker" v-show="show.date">
-    <date-picker v-bind:selected-date.sync="dateTime">
+  <div class="am-datepicker">
+    <div class="am-datepicker-caret"
+         v-if="caretDisplayed"></div>
+    <div class="am-datepicker-date"
+         v-if="showDatePicker"
+         v-show="show.date">
+      <date-picker v-bind:selected-date.sync="dateTime"></date-picker>
+    </div>
+    <div class="am-datepicker-time"
+         v-if="showTimePicker"
+         v-show="show.time">
+      <time-picker v-bind:selected-date.sync="dateTime"
+                   v-on:viewchange="handleViewChange"></time-picker>
+    </div>
+    <div class="am-datepicker-toggle"
+         v-if="showDatePicker&&showTimePicker"
+         v-show="show.date"
+         v-on:click="handleToggleTime">
+      <icon name="clock-o"></icon>
+    </div>
+    <div class="am-datepicker-toggle"
+         v-if="showDatePicker&&showTimePicker"
+         v-show="show.time"
+         v-on:click="handleToggleDate">
+      <icon name="calendar"></icon>
+    </div>
   </div>
-  <div class="am-datepicker-time" v-if="showTimePicker" v-show="show.time">
-    <time-picker v-bind:selected-date.sync="dateTime" v-on:viewchange="handleViewChange">
-  </div>
-  <div class="am-datepicker-toggle" v-if="showDatePicker&&showTimePicker" v-show="show.date" v-on:click="handleToggleTime">
-    <icon name="clock-o"></icon>
-  </div>
-  <div class="am-datepicker-toggle" v-if="showDatePicker&&showTimePicker" v-show="show.time" v-on:click="handleToggleDate">
-    <icon name="calendar"></icon>
-  </div>
-</div>
-
 </template>
 
 <style>
-
 .am-datepicker {
   display: block;
 }
-
 </style>
 
 <script>
@@ -99,12 +107,12 @@ export default {
 
     handleToggleTime() {
       this.show.date = false,
-      this.show.time = true;
+        this.show.time = true;
     },
 
     handleToggleDate() {
       this.show.date = true,
-      this.show.time = false;
+        this.show.time = false;
     },
 
     handleViewChange(show) {

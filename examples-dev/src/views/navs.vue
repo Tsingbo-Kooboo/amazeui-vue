@@ -1,33 +1,44 @@
 <template>
+  <div>
+    <topbar title="Amaze UI vue">
+      <am-nav v-bind:items="items"
+              topbar
+              pills></am-nav>
+    </topbar>
 
-<topbar title="Amaze UI vue">
-  <am-nav v-bind:items="items" topbar pills></am-nav>
-</topbar>
+    <topbar inverse
+            title="Amaze UI vue">
+      <am-nav v-bind:items="items"
+              topbar
+              pills></am-nav>
+    </topbar>
 
-<topbar inverse title="Amaze UI vue">
-  <am-nav v-bind:items="items" topbar pills></am-nav>
-</topbar>
-
-<grid>
-  <column v-bind:sm="12">
-    <div class="am-padding">
-      <am-nav v-bind:items="items"></am-nav>
-    </div>
-    <div class="am-padding">
-      <am-nav v-bind:items="items" pills></am-nav>
-    </div>
-    <div class="am-padding">
-      <am-nav v-bind:items="items" tabs></am-nav>
-    </div>
-    <div class="am-padding">
-      <am-nav v-bind:items="items" justify pills></am-nav>
-    </div>
-    <div class="am-padding">
-      <am-nav v-bind:items="items" justify tabs></am-nav>
-    </div>
-  </column>
-</grid>
-
+    <grid>
+      <column v-bind:sm="12">
+        <div class="am-padding">
+          <am-nav v-bind:items="items"></am-nav>
+        </div>
+        <div class="am-padding">
+          <am-nav v-bind:items="items"
+                  pills></am-nav>
+        </div>
+        <div class="am-padding">
+          <am-nav v-bind:items="items"
+                  tabs></am-nav>
+        </div>
+        <div class="am-padding">
+          <am-nav v-bind:items="items"
+                  justify
+                  pills></am-nav>
+        </div>
+        <div class="am-padding">
+          <am-nav v-bind:items="items"
+                  justify
+                  tabs></am-nav>
+        </div>
+      </column>
+    </grid>
+  </div>
 </template>
 
 <script>

@@ -1,12 +1,15 @@
 <template>
-
-<div class="am-form-group">
-  <label for="f-{{ name }}" v-if="label !== ''">{{ label }}</label>
-  <select id="f-{{ name }}" name="{{ name }}" v-model="model">
-    <option value="{{ item.value }}" v-for="item in items">{{ item.label }}</option>
-  </select>
-</div>
-
+  <div class="am-form-group">
+    <label :for="'f-' + name"
+           v-if="label !== ''">{{ label }}</label>
+    <select :id="'f-' + name"
+            :name="name"
+            v-model="model">
+      <option :value="item.value"
+              :key="index"
+              v-for="(item, index) in items">{{ item.label }}</option>
+    </select>
+  </div>
 </template>
 
 <script>

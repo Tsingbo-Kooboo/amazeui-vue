@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
-
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
 module.exports = {
 
   entry: {
@@ -15,12 +17,24 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      { test: /\.vue$/, loader: 'vue' },
+    rules: [
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter')
+      //   }
+      // },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel",
+        loader: "babel-loader",
         query: {
           presets: ['es2015'],
           plugins: ['transform-runtime']
@@ -29,13 +43,8 @@ module.exports = {
     ]
   },
 
-  vue: {
-    loaders: {
-      html: 'vue-html?removeRedundantAttributes=false'
-    }
-  },
-
   resolve: {
+    extensions: ['.js', '.vue', '.json'],
     alias: {
       "amazeui-vue": path.resolve(__dirname, '..'),
       "views": path.resolve(__dirname, '../examples-dev/src/views')
@@ -43,9 +52,22 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin("vendor", "vue.js")
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      filename: "vue.js"
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
 
-  devtool: "#inline-source-map"
-
+  devtool: "#inline-source-map",
+  devServer: {
+    contentBase: path.resolve(__dirname, '../examples-dev/'),
+    port: 9999,
+    compress: true,
+    allowedHosts: [
+      'localhost'
+    ],
+    inline: true,
+    hot: true
+  }
 };

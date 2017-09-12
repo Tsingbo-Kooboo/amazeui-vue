@@ -1,25 +1,25 @@
 <template>
-
-<div class="am-panel am-panel-{{ amStyle }}">
-  <div class="am-panel-hd" v-on:click="show = !show">{{ header }}</div>
-  <div class="am-panel-collapse" v-if="collapse" v-show="show" transition="collapse"><slot></slot></div>
-  <slot v-if="!collapse"></slot>
-</div>
-
+  <div :class="['am-panel', 'am-panel-'+ amStyle]">
+    <div class="am-panel-hd" v-on:click="show = !show">{{ header }}</div>
+    <div class="am-panel-collapse" v-if="collapse" v-show="show" transition="collapse">
+      <slot></slot>
+    </div>
+    <slot v-if="!collapse"></slot>
+  </div>
 </template>
 
 <style>
-
 .collapse-transition {
   position: relative;
   overflow: hidden;
   -webkit-transition: height 300ms ease;
   transition: height 300ms ease;
 }
-.collapse-enter, .collapse-leave {
+
+.collapse-enter,
+.collapse-leave {
   height: 0 !important;
 }
-
 </style>
 
 <script>

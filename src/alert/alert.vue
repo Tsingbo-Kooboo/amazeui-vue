@@ -1,10 +1,8 @@
 <template>
-
-<div class="am-alert am-alert-{{ style }}" transition="fadeout">
-  <button type="button" class="am-close" v-if="closeable" @click="close">&times;</button>
-  <slot></slot>
-</div>
-
+  <div :class="['am-alert', 'am-alert-' + style]" transition="fadeout">
+    <button type="button" class="am-close" v-if="closeable" @click="close">&times;</button>
+    <slot></slot>
+  </div>
 </template>
 
 <style>
@@ -13,6 +11,7 @@
   -webkit-transition: opacity .2s linear;
   transition: opacity .2s linear;
 }
+
 .fadeout-leave {
   opacity: 0 !important;
 }
@@ -40,7 +39,7 @@ export default {
 
   transitions: {
     fadeout: {
-      afterLeave: function (el) {
+      afterLeave: function(el) {
         // 此时还没有完全销毁
         return this.closed();
       }

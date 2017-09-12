@@ -1,10 +1,15 @@
 <template>
-
-<div class="am-form-group">
-  <label for="f-{{ name }}"><slot></slot></label>
-  <input id="f-{{ name }}" v-bind:type="type" v-bind:name="name" v-bind:placeholder="placeholder" v-bind:disabled="disabled" v-model="model">
-</div>
-
+  <div class="am-form-group">
+    <label :for="'f-' + name">
+      <slot></slot>
+    </label>
+    <input :id="'f-' + name"
+           v-bind:type="type"
+           v-bind:name="name"
+           v-bind:placeholder="placeholder"
+           v-bind:disabled="disabled"
+           :value.sync="model">
+  </div>
 </template>
 
 <script>
@@ -29,7 +34,6 @@ module.exports = {
     },
     "model": {
       type: String,
-      twoWay: true,
       default: '',
       required: false
     }

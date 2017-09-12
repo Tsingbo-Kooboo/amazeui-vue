@@ -1,28 +1,37 @@
 <template>
+  <div>
+    <div class="am-modal"
+         tabindex="-1"
+         :class="{'am-modal-active': show, 'am-modal-lg': lg}"
+         v-show="show">
+      <div class="am-modal-dialog">
+        <slot name="header"></slot>
+        <slot name="body"></slot>
+        <slot name="footer"></slot>
+      </div>
+    </div>
 
-<div class="am-modal" tabindex="-1" v-bind:class="{'am-modal-active': show, 'am-modal-lg': lg}" v-show="show">
-  <div class="am-modal-dialog">
-    <slot name="header"></slot>
-    <slot name="body"></slot>
-    <slot name="footer"></slot>
+    <div class="am-dimmer"
+         :class="{'am-active': show}"
+         v-show="show"
+         v-on:click="close"
+         transition="modal-fade"></div>
   </div>
-</div>
-
-<div class="am-dimmer" v-bind:class="{'am-active': show}" v-show="show" v-on:click="close" transition="modal-fade"></div>
-
 </template>
 
 <style>
-
 .modal-fade-transition {
   -webkit-transition: background-color 300ms 0s;
   transition: background-color 300ms 0s;
 }
-.modal-fade-enter, .modal-fade-leave {
+
+.modal-fade-enter,
+.modal-fade-leave {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.am-modal, .am-dimmer {
+.am-modal,
+.am-dimmer {
   display: block;
 }
 
@@ -31,7 +40,6 @@
   margin-left: -512px;
   top: 100px;
 }
-
 </style>
 
 <script>
@@ -57,7 +65,7 @@ export default {
     "modal-fade": {
       beforeEnter(el) {
       },
-      enter (el) {
+      enter(el) {
       },
       afterEnter(el) {
       },

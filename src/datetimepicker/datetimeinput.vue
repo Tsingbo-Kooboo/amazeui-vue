@@ -1,14 +1,20 @@
 <template>
-
-<div class="am-form-group" v-el:pos-obj>
-  <input type="text" class="am-form-field" v-model="dateTime" v-on:click="handleClick">
-</div>
-<date-time-picker v-if="show" caret-displayed v-bind:style="pos"
-  v-bind:date-time.sync="dateTimeDate"
-  v-bind:show-date-picker="!timeOnly"
-  v-bind:show-time-picker="!dateOnly">
-</date-time-picker>
-
+  <div>
+    <div class="am-form-group"
+         v-el:pos-obj>
+      <input type="text"
+             class="am-form-field"
+             v-model="dateTime"
+             v-on:click="handleClick">
+    </div>
+    <date-time-picker v-if="show"
+                      caret-displayed
+                      v-bind:style="pos"
+                      v-bind:date-time.sync="dateTimeDate"
+                      v-bind:show-date-picker="!timeOnly"
+                      v-bind:show-time-picker="!dateOnly">
+    </date-time-picker>
+  </div>
 </template>
 
 <script>

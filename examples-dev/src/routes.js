@@ -1,31 +1,34 @@
-export default {
-  "/": {
-    component: require('views/index.vue')
-  }
+import Vue from 'vue'
+import Router from 'vue-router'
 
-  , "/article": {
-    component: {
-      template: '<articles></articles>',
-      components: {
-        "articles": function(resolve) {
-          require(['views/articles.vue'], resolve)
-        }
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: require('views/index.vue')
+    },
+    {
+      path: '/article',
+      name: 'article',
+      component: resolve => require(['views/articles.vue'], resolve),
+      meta: {
+        layout: 'account'
       }
+    },
+    {
+      path: '/buttons',
+      name: 'buttons',
+      component: resolve => require(['views/buttons.vue'], resolve)
     }
-  }
+  ]
+})
 
-  , "/buttons": {
-    component: {
-      template: '<buttons></buttons>',
-      components: {
-        "buttons": function(resolve) {
-          require(['views/buttons.vue'], resolve)
-        }
-      }
-    }
-  }
 
-  , "/forms": {
+export const xxx = {
+   "/forms": {
     component: {
       template: '<forms></forms>',
       components: {

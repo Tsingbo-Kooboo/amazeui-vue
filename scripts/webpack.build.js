@@ -12,12 +12,12 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      { test: /\.vue$/, loader: 'vue' },
+    rules: [
+      { test: /\.vue$/, loader: 'vue-loader' },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel",
+        loader: "babel-loader",
         query: {
           presets: ['es2015'],
           plugins: ['transform-runtime']
@@ -25,13 +25,6 @@ module.exports = {
       }
     ]
   },
-
-  vue: {
-    loaders: {
-      html: 'vue-html?removeRedundantAttributes=false'
-    }
-  },
-
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -44,5 +37,4 @@ module.exports = {
       }
     })
   ]
-
 };
